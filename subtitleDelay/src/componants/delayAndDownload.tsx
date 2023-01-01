@@ -1,6 +1,6 @@
 import delaySubs from "../delay";
 
-const delayAndDownload: React.FC<{ delay: number; file: File | null }> = ({
+const DelayAndDownload: React.FC<{ delay: number; file: File | null }> = ({
   delay,
   file,
 }) => {
@@ -17,6 +17,19 @@ const delayAndDownload: React.FC<{ delay: number; file: File | null }> = ({
           }
           const newFileString = delaySubs(oldFileString, delay);
           console.log(newFileString);
+          const fileToDownload = new Blob([newFileString], {
+            type: "text/plain",
+          });
+          const a = document.createElement("a");
+          const url = URL.createObjectURL(fileToDownload);
+          // download the file
+          a.setAttribute(
+            "download",
+            `${file?.name?.split(".")[0]}_delayed_${delay}.srt`
+          );
+          a.setAttribute("href", `${url}`);
+          a.click();
+          a.remove();
         }}
       >
         Delay and Download
@@ -29,4 +42,4 @@ const delayAndDownload: React.FC<{ delay: number; file: File | null }> = ({
   );
 };
 
-export default delayAndDownload;
+export default DelayAndDownload;

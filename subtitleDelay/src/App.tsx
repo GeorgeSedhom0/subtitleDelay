@@ -25,6 +25,7 @@ function App() {
           setDelay(parseInt(e.target.value));
         }}
       />
+
       <DelayAndDownload delay={delay} file={file} />
     </div>
   );
