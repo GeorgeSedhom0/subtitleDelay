@@ -34,10 +34,7 @@ const DelayAndDownload: React.FC<{ delay: number; file: File | null }> = ({
       >
         Delay and Download
       </button>
-      <h4>
-        You can see the results on the console soon will be able to download the
-        file
-      </h4>
+      <h4>YAfter clicking the button, the new file will be downloaded</h4>
     </div>
   );
 };
